@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentOps — Business Operations Center</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <div class="brand-mark"><i data-lucide="layers"></i></div>
+        <div class="brand-text">
+          <span class="brand-name">AgentOps</span>
+          <span class="brand-sub">AI Business Operations</span>
+        </div>
+      </div>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar">
+        <i data-lucide="panel-left-close"></i>
+      </button>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-item active" href="#" data-nav="dashboard">
+        <i data-lucide="layout-grid"></i><span>Dashboard</span>
+      </a>
+      <a class="nav-item" href="#" data-nav="assistant">
+        <i data-lucide="sparkles"></i><span>AI Assistant</span>
+      </a>
+      <a class="nav-item" href="#" data-nav="inventory">
+        <i data-lucide="package"></i><span>Inventory</span>
+      </a>
+      <a class="nav-item" href="#" data-nav="orders">
+        <i data-lucide="truck"></i><span>Orders</span>
+      </a>
+      <a class="nav-item" href="#" data-nav="analytics">
+        <i data-lucide="bar-chart-3"></i><span>Analytics</span>
+      </a>
+      <a class="nav-item" href="#" data-nav="agents">
+        <i data-lucide="bot"></i><span>Agents</span>
+      </a>
+      <a class="nav-item" href="#" data-nav="activity">
+        <i data-lucide="activity"></i><span>Activity</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a class="nav-item" href="#"><i data-lucide="settings"></i><span>Settings</span></a>
+      <a class="nav-item" href="#"><i data-lucide="circle-help"></i><span>Help</span></a>
+      <div class="profile">
+        <div class="profile-avatar">A</div>
+        <div class="profile-text">
+          <span class="profile-name">Aneesh</span>
+          <span class="profile-role">Operations Manager</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- mobile backdrop -->
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main-shell">
+
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu"><i data-lucide="menu"></i></button>
+      <div class="topbar-greeting">
+        <h1>Good morning, Aneesh</h1>
+        <p>Business Operations Center</p>
+      </div>
+      <div class="topbar-status">
+        <span class="status-dot"></span> All Systems Operational
+      </div>
+      <div class="topbar-right">
+        <span class="topbar-date" id="topbarDate"></span>
+        <button class="icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="badge">3</span>
+        </button>
+        <div class="topbar-avatar">A</div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="content-grid">
+
+        <!-- LEFT / CENTER COLUMN -->
+        <div class="content-primary">
+
+          <!-- AI QUERY CARD -->
+          <section class="query-card" aria-label="AI query">
+            <div class="query-card-head">
+              <h2>Ask your business anything</h2>
+              <p>Use natural language to analyze inventory, pricing, orders and logistics.</p>
+            </div>
+
+            <div class="query-input-wrap">
+              <textarea id="queryInput" class="query-input" rows="2" placeholder="What would you like to know?"></textarea>
+              <div class="query-input-actions">
+                <div class="query-input-left">
+                  <button class="ghost-icon-btn" aria-label="Attach file" title="Attach">
+                    <i data-lucide="paperclip"></i>
+                  </button>
+                  <button class="ghost-icon-btn" aria-label="Voice input" title="Voice">
+                    <i data-lucide="mic"></i>
+                  </button>
+                  <span class="kbd-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> to run</span>
+                </div>
+                <button class="send-btn" id="sendBtn">
+                  <span>Run query</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="chips" id="chips">
+              <!-- <button class="chip" data-query="Show products with insufficient stock.">Check low-stock products</button> -->
+              <button class="chip" data-query="Check if 20 wireless keyboards are available.">Check availability</button>
+              <button class="chip" data-query="Calculate the total cost of 50 USB-C hubs.">Calculate order cost</button>
+              <button class="chip" data-query="Estimate delivery for Order #10482.">Track an order</button>
+              <button class="chip" data-query="Estimate delivery for Order #10482.">Estimate delivery</button>
+              <button class="chip" data-query="Show today's business activity.">Today's business activity</button>
+            </div>
+          </section>
+
+          <!-- KPI CARDS -->
+          <section class="kpi-grid" aria-label="Business metrics">
+            <div class="kpi-card">
+              <div class="kpi-icon good"><i data-lucide="heart-pulse"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Inventory Health</span>
+                <span class="kpi-value">87%</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon warn"><i data-lucide="alert-triangle"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Low Stock</span>
+                <span class="kpi-value">6 Items</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon neutral"><i data-lucide="clock"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Pending Orders</span>
+                <span class="kpi-value">12</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon good"><i data-lucide="shopping-cart"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Orders Today</span>
+                <span class="kpi-value">38</span>
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon accent"><i data-lucide="indian-rupee"></i></div>
+              <div class="kpi-body">
+                <span class="kpi-label">Revenue Today</span>
+                <span class="kpi-value">₹84,500</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- AI RESULT SECTION -->
+          <section class="result-card" id="resultCard" aria-live="polite">
+            <div class="result-empty" id="resultEmpty">
+              <i data-lucide="brain-circuit"></i>
+              <p>Submit a query above to see the AI business analysis here.</p>
+            </div>
+
+            <div class="result-body hidden" id="resultBody">
+              <div class="result-head">
+                <span class="result-eyebrow">AI Business Analysis</span>
+                <span class="result-time" id="resultTime"></span>
+              </div>
+
+              <div class="result-query">
+                <i data-lucide="quote"></i>
+                <p id="resultQueryText"></p>
+              </div>
+
+              <div class="result-steps" id="resultSteps"></div>
+
+              <div class="result-final" id="resultFinal">
+                <div class="result-final-label"><i data-lucide="badge-check"></i> Final Answer</div>
+                <p id="resultFinalText"></p>
+              </div>
+            </div>
+          </section>
+
+          <!-- RECENT ACTIVITY -->
+          <section class="activity-card" aria-label="Recent activity">
+            <div class="card-head">
+              <h3>Recent Activity</h3>
+            </div>
+            <ul class="activity-list" id="activityList"></ul>
+          </section>
+
+        </div>
+
+        <!-- RIGHT COLUMN: AGENT EXECUTION -->
+        <aside class="content-secondary">
+
+          <section class="agent-exec-card" aria-label="Agent execution">
+            <div class="card-head">
+              <h3>Agent Execution</h3>
+              <span class="pill" id="execPill">Idle</span>
+            </div>
+
+            <div class="pipeline" id="pipeline">
+              <div class="pipeline-node" data-node="query">
+                <div class="pipeline-dot"><i data-lucide="user"></i></div>
+                <span>User Query</span>
+              </div>
+              <div class="pipeline-line"></div>
+              <div class="pipeline-node" data-node="orchestrator">
+                <div class="pipeline-dot"><i data-lucide="git-branch"></i></div>
+                <span>Orchestrator</span>
+              </div>
+              <div class="pipeline-line"></div>
+              <div class="pipeline-branches" id="pipelineBranches"></div>
+              <div class="pipeline-line"></div>
+              <div class="pipeline-node" data-node="final">
+                <div class="pipeline-dot"><i data-lucide="flag"></i></div>
+                <span>Final Answer</span>
+              </div>
+            </div>
+
+            <div class="agent-list" id="agentExecList"></div>
+          </section>
+
+          <section class="agent-status-card" aria-label="Agent status">
+            <div class="card-head">
+              <h3>Agent Status</h3>
+            </div>
+            <ul class="status-list">
+              <li><span class="status-name">Orchestrator</span><span class="status-live"><span class="dot"></span>Online</span></li>
+              <li><span class="status-name">Inventory Agent</span><span class="status-live"><span class="dot"></span>Online</span></li>
+              <li><span class="status-name">Pricing Agent</span><span class="status-live"><span class="dot"></span>Online</span></li>
+              <li><span class="status-name">Logistics Agent</span><span class="status-live"><span class="dot"></span>Online</span></li>
+            </ul>
+          </section>
+
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
